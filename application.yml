@@ -8,7 +8,7 @@ proxy:
   - id: rap-reg-template
     display-name: Test app for shinyproxy
     container-cmd: ["R", "-e", "shiny::runApp('/root/rapRegTemplate')"]
-    container-image: rap-reg-template
+    container-image: hnskde/rap-reg-template
     container-network: krater-net
 logging:
   file:
