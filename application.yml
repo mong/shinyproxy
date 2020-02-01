@@ -1,4 +1,7 @@
 proxy:
+  title: Krater
+  hide-navbar: true
+  landing-page: /
   port: 8080
   container-wait-time: 20000
   authentication: none
@@ -13,3 +16,4 @@ proxy:
 logging:
   file:
     shinyproxy.log
+
