@@ -1,27 +1,16 @@
 version: "3.6"
 
-services:
-  rproxy:
-    image: hnskde/rproxy
-    container_name: krater-rproxy
-    ports:
-      - 80:80
-    networks:
-      - krater-net
-    depends_on:
-      - shinyproxy
-
   shinyproxy:
     image: hnskde/shinyproxy
-    container_name: krater-shinyproxy
+    container_name: shinyproxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    expose:
-      - 8080
+    ports:
+      - 8080:8080
     networks:
-      - krater-net
+      - mongr-net
 
 networks:
-  krater-net:
-    name: krater-net
+  mongr-net:
+    name: mongr-net
 
