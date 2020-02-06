@@ -10,7 +10,6 @@ proxy:
     display-name: Test app for shinyproxy
     container-cmd: ["R", "-e", "shiny::runApp('/root/rapRegTemplate')"]
     container-image: hnskde/rap-reg-template
-    container-network: mongr-net
 logging:
   file:
     shinyproxy.log
