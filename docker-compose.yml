@@ -3,9 +3,14 @@ version: "3.6"
 services:
   shinyproxy:
     image: hnskde/shinyproxy
-    container_name: shinyproxy
+    container_name: shinyproxy_test
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080:8080
+    networks:
+      - mongr-net
 
+networks:
+  mongr-net:
+    name: mongr-net
