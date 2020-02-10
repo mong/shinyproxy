@@ -7,6 +7,7 @@ proxy:
   authentication: none
   docker:
     internal-networking: true
+  usage-stats-url: http://172.31.31.109:8086/write?db=shinyproxy_usagestats
   specs:
   - id: rap-reg-template
     display-name: Test app for shinyproxy
