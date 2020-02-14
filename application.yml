@@ -9,6 +9,11 @@ proxy:
     internal-networking: true
   usage-stats-url: http://172.31.31.109:8086/write?db=shinyproxy_usagestats
   specs:
+  - id: qmongr
+    display-name: qmongr
+    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); qmongr::run_app()"]
+    container-image: hnskde/qmongr
+    container-network: mongr-net
   - id: rap-reg-template
     display-name: Test app for shinyproxy
     container-cmd: ["R", "-e", "shiny::runApp('/root/rapRegTemplate')"]
