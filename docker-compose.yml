@@ -19,6 +19,22 @@ services:
         awslogs-stream: shinyproxy
         awslogs-create-group: "true"
 
+  watchtower:
+    image: containerrr/watchtower
+    restart: unless-stopped
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:
+      --label-enable --no-restart --cleanup
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-west-1
+        awslogs-group: watchtower
+        awslogs-stream: watchtower
+        awslogs-create-group: "true"
+
 networks:
   mongr-net:
     name: mongr-net
