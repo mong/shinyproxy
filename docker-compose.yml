@@ -20,7 +20,7 @@ services:
         awslogs-create-group: "true"
 
   watchtower:
-    image: containerrr/watchtower
+    image: containrrr/watchtower
     restart: unless-stopped
     container_name: watchtower
     volumes:
