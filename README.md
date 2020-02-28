@@ -1,7 +1,7 @@
 # Proxy our shiny apps
 
 ## Introduction
-Re-using the name of [the underlying Spring boot web application](https://www.shinyproxy.io/) _shinyproxy_ is the deployer of shiny web applications developed and mentained by SKDE. Both _shinyserver_ and the web applications it it a proxy for are deployed as [docker containers](https://www.yr.no/place/Norway/Troms_og_Finnmark/Troms%C3%B8/Troms%C3%B8/hour_by_hour.html) and replicated at a given number of nodes to reduce potential downtime
+Re-using the name of [the underlying Spring boot web application](https://www.shinyproxy.io/) _shinyproxy_ is the deployer of shiny web applications developed and mentained by SKDE. Both _shinyserver_ and the web applications it it a proxy for are deployed as [docker containers](https://www.yr.no/place/Norway/Troms_og_Finnmark/Troms%C3%B8/Troms%C3%B8/hour_by_hour.html) and replicated at a given number of nodes to reduce potential downtime.
 
 ![mongr.no shinyproxy setup](mongr_shinyproxy.png)
 
@@ -56,12 +56,12 @@ docker-compose up -d
 Repeat the above steps on all nodes.
 
 ## Start and stop service
-To enable _shinyproxy_ use _docker-compose_ to start the relevant services in detached mode:
+To enable _shinyproxy_ use _docker-compose_ to start the relevant services in detached mode. Move into the _shinyproxy_ directory and run:
 ```
 docker-compose up -d
 ```
 
-To stop the same services do:
+To stop it do:
 ```
 docker-compose down
 ```
@@ -74,4 +74,4 @@ docker-compose restart
 For other options please consult [the docker compose docs](https://docs.docker.com/compose/).
 
 ## Note on updating shiny applications
-...text to be...
+Updating the shiny applications is a somewhat different process and part of a continuous integration and delivery (ci/cd) process. When starting _shinyproxy_ docker container as described above a second service, _watchtower_, is also started. This service regularly poll for newer images for running shiny app containers. If updates are found the corresponding container are gracefully shut down and restarted from the updated docker image. 
