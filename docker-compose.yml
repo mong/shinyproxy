@@ -16,7 +16,7 @@ services:
       options:
         awslogs-region: eu-west-1
         awslogs-group: shinyproxy
-        awslogs-stream: shinyproxy
+        awslogs-stream: ${NODE_NAME}
         awslogs-create-group: "true"
 
   watchtower:
@@ -31,7 +31,7 @@ services:
       options:
         awslogs-region: eu-west-1
         awslogs-group: watchtower
-        awslogs-stream: watchtower
+        awslogs-stream: ${NODE_NAME}
         awslogs-create-group: "true"
 
 networks:
