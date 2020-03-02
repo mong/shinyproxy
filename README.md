@@ -16,7 +16,7 @@ All steps are performed from the command line at each server instance (node) tha
 ### First time
 Make sure that the current content of this repo is available by using git:
 ```
-git clone https://SKDE-Felles/shinyproxy.git
+git clone https://github.com/SKDE-Felles/shinyproxy.git
 ```
 
 If the server to be hosting _shinyproxy_ is just created (vanilla state) make sure _docker-ce_ and _docker-compose_ are installed along with other relevant settings. Move into the newly created _shinyproxy_directory and run the following script:
