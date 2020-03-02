@@ -1,4 +1,16 @@
+#!/bin/bash
+
 ### Install script for docker ++ at ubuntu 18.04 (bionic)
+
+# get node name and set env accordingly
+echo
+read -p 'Please type the node name (e.g. node0): ' node_name
+echo
+echo Setting up $node_name
+echo
+cat << EOF >> ~/.profile
+export NODE_NAME=$node_name
+EOF
 
 # upadate system
 sudo apt update
@@ -42,3 +54,10 @@ sudo mv override.conf /etc/systemd/system/docker.service.d/
 # (re)start dockerd
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+
+echo
+echo Finished
+echo
+echo Please remember to re-login before running docker-compose
+echo
+
