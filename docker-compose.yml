@@ -25,7 +25,7 @@ services:
     container_name: watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --label-enable --no-restart --cleanup
+    command: --label-enable --include-stopped --no-restart --cleanup
     logging:
       driver: awslogs
       options:
