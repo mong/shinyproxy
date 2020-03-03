@@ -33,7 +33,7 @@ First, make sure to download the latest updates from this repository. Move into 
 ```
 git pull origin master
 ```
-In fact, this step is only needed upon chenges in the _docker-compose.yml_-file.
+In fact, this step is only needed upon changes in the _docker-compose.yml_-file.
 
 Then, take down _shinyproxy_ docker container:
 ```
