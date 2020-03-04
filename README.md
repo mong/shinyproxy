@@ -74,4 +74,8 @@ docker-compose restart
 For other options please consult [the docker compose docs](https://docs.docker.com/compose/).
 
 ## Note on updating shiny applications
-Updating the shiny applications is a somewhat different process and part of a continuous integration and delivery (ci/cd) scheme. When starting _shinyproxy_ docker container as described above a second service, [watchtower](https://containrrr.github.io/watchtower/), is also started. This service regularly poll for newer images for running shiny app containers tagged for such updates. If updates are found the corresponding images are downloaded. A new version of a shiny application will be available once _shinyproxy_ restarts the corresonding container from the updated image. 
+Updating the shiny applications is a somewhat different process and part of a continuous integration and delivery (ci/cd) scheme. At each node running _shinyproxy_ a cron job is defined to trigger update routine every 5 minutes on weekdays:
+```
+*/5 * * * 1-5 $HOME/shinyproxy/update_images.sh >/dev/null 2>&1
+```
+If updates are found the corresponding images are downloaded. A new version of a shiny application will be available once _shinyproxy_ restarts the corresonding container from the updated image. 
