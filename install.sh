@@ -61,7 +61,7 @@ echo
 echo Setting up cron job for continuous docker image updates
 echo
 crontab -l > current
-echo "*/5 * * * 1-5 update_images.sh >/dev/null 2>&1" >> current
+echo "*/5 * * * 1-5 ~/shinyproxy/update_images.sh >/dev/null 2>&1" >> current
 crontab current
 rm current
 
