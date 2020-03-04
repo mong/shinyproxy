@@ -55,6 +55,24 @@ sudo mv override.conf /etc/systemd/system/docker.service.d/
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
+# Make crontab entry for docker image updates
+# Every 5 min Monday throug Friday
+echo
+echo Setting up cron job for continuous docker image updates
+echo
+crontab -l > current
+echo "*/5 * * * 1-5 update_images.sh >/dev/null 2>&1" >> current
+crontab current
+rm current
+
+current=`crontab -l`
+echo
+echo Now, current crontab is:
+echo
+echo "$current"
+echo
+
+
 echo
 echo Finished
 echo
