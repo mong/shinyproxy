@@ -24,6 +24,19 @@ If the server to be hosting _shinyproxy_ is just created (vanilla state) make su
 sudo ./install.sh
 ```
 
+If AWS LogWatch will be used credetials need to be defined and available to docker. Add the following to _/etc/systemd/system/docker.service.d/override.conf_:
+```
+Environment="AWS_ACCESS_KEY_ID=[some_key_id]" "AWS_SECRET_ACCESS_KEY=[some_seecret_access_key]"
+```
+Corresponding values are found using the AWS Identity and Access Management (IAM) service. Save the file and reload the daemon
+```
+sudo systemctl daemon-reload
+```
+and restart the docker service
+```
+sudo systemctl restart docker
+```
+
 Repeat the above instructions at all nodes.
 
 ### Update
