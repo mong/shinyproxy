@@ -86,7 +86,15 @@ docker-compose restart
 
 For other options please consult [the docker compose docs](https://docs.docker.com/compose/).
 
-## Note on updating shiny applications
+## Note on shiny applications
+
+### Install
+_shinyproxy_ do not pull images from remote regisries. To make images available locally at each node these have to be pulled the first time they are used, _e.g._
+```
+docker pull hnskde/qmongr
+```
+
+### Update
 Updating the shiny applications is a somewhat different process and part of a continuous integration and delivery (ci/cd) scheme. At each node running _shinyproxy_ a cron job is defined to trigger update routine every 5 minutes on weekdays:
 ```
 */5 * * * 1-5 $HOME/shinyproxy/update_images.sh >/dev/null 2>&1
