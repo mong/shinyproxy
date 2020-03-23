@@ -14,6 +14,11 @@ proxy:
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); qmongr::run_app()"]
     container-image: hnskde/qmongr
     container-network: mongr-net
+  - id: tmongr
+    display-name: tmongr
+    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); tmongr::run_app()"]
+    container-image: hnskde/tmongr
+    container-network: mongr-net
   - id: rap-reg-template
     display-name: Test app for shinyproxy
     container-cmd: ["R", "-e", "shiny::runApp('/root/rapRegTemplate')"]
