@@ -8,8 +8,17 @@ Re-using the name of [the underlying Spring boot web application](https://www.sh
 _shinyproxy_ is part of the [infrastructure at mongr.no](https://github.com/SKDE-Felles/lb-rp) and serves shiny applications such as [qmongr](https://github.com/SKDE-Felles/qmongr).
 
 ## Config
-Configuration of _shinyproxy_ is defined in the _application.yml_-file. Re-configuration will in most likely occur as a result of new shiny application being added (or old ones removed). For details please see [the ShinyProxy docs](https://www.shinyproxy.io/configuration/)
+Configuration of _shinyproxy_ is defined in the _application.yml_-file. Re-configuration will in most likely occur as a result of new shiny application being added (or old ones removed). For details please see [the ShinyProxy docs](https://www.shinyproxy.io/configuration/).
 
+## Build
+Our _shinyproxy_ will itself run as a docker container. To build the corresponding image move into the directory holding the _Dockerfile_ and run
+```
+docker build -t hnskde/shinyproxy:latest .
+```
+Then, push this image to the registry:
+```
+docker push hnskde/shinyproxy:latest
+```
 ## Install
 All steps are performed from the command line at each server instance (node) that will be running _shinyproxy_.
 
@@ -36,32 +45,33 @@ and restart the docker service
 ```
 sudo systemctl restart docker
 ```
-
+Then, download the latest image from registry:
+```
+docker pull hnskde/shinyproxy
+```
 Repeat the above instructions at all nodes.
 
 ### Update
-Please note that an update of the _shinyproxy_ will render all shiny applications behind it inaccessible. Therefore, make sure to perform all the following steps one node at a time. This will make sure that while one node is down for an update the other nodes will still serve users of the shiny applications. 
+Please note that an update of the _shinyproxy_ will render all shiny applications behind it inaccessible. Therefore, make sure to perform all the following steps one __node at a time__. This will make sure that while one node is down for an update the other nodes will still serve users of the shiny applications. 
 
-First, make sure to download the latest updates from this repository. Move into the _shinyproxy_ directory and run
+First, make sure to download the latest update of the _shinyproxy_ image from the registry:
+```
+docker pull hnskde/shinyproxy
+```
+If the update also includes changes of _docker-compose.yml_ get the latest version using git:
 ```
 git pull origin master
 ```
-In fact, this step is only needed upon changes in the _docker-compose.yml_-file.
 
 Then, take down _shinyproxy_ docker container:
 ```
 docker-compose down
 ```
-and download the updated _shinyproxy_ image:
-```
-docker pull hnskde/shinyproxy
-```
-
-Clean up old images and containers:
+and clean up old images and containers:
 ```
 docker system prune
 ```
-and bring up the updated _shinyproxy_ container:
+Finally, bring up the updated _shinyproxy_ container:
 ```
 docker-compose up -d
 ```
@@ -89,7 +99,7 @@ For other options please consult [the docker compose docs](https://docs.docker.c
 ## Note on shiny applications
 
 ### Install
-_shinyproxy_ do not pull images from remote regisries. To make images available locally at each node these have to be pulled the first time they are used, _e.g._
+_shinyproxy_ do not pull images from remote registries. To make images available locally at each node these have to be pulled the first time they are used, _e.g._
 ```
 docker pull hnskde/qmongr
 ```
