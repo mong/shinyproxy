@@ -12,6 +12,42 @@ cat << EOF >> ~/.profile
 export NODE_NAME=$node_name
 EOF
 
+echo
+read -p 'Please type the database host name (e.g. 192.168.0.2): ' db_host_name
+echo
+echo Setting up $db_host_name
+echo
+cat << EOF >> ~/.profile
+export IMONGR_DB_HOST=$db_host_name
+EOF
+
+echo
+read -p 'Please type the name of the qmongr database (e.g. imongr): ' db_name
+echo
+echo Setting up $db_name
+echo
+cat << EOF >> ~/.profile
+export IMONGR_DB_NAME=$db_name
+EOF
+
+echo
+read -p 'Please type the user name of the qmongr database (e.g. imongr): ' user_name
+echo
+echo Setting up $user_name
+echo
+cat << EOF >> ~/.profile
+export IMONGR_DB_USER=$user_name
+EOF
+
+echo
+read -p 'Please type the password of the qmongr database user: ' user_pass
+echo
+echo Setting up password
+echo
+cat << EOF >> ~/.profile
+export IMONGR_DB_PASS=$user_pass
+EOF
+
 # upadate system
 sudo apt update
 
