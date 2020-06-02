@@ -1,0 +1,4 @@
+Since imongr, shinyproxy at mongr.no will have to be built differently according
+to how it will be applied. Everything relating to building shinyproxy docker
+image for qmonger should therefore be moved from the parent directory to this 
+one
