@@ -49,6 +49,15 @@ export IMONGR_DB_PASS=$user_pass
 EOF
 
 echo
+read -p 'Please type the adminer url (in the form ip:port): ' adminer_url
+echo
+echo Setting up adminer host
+echo
+cat << EOF >> ~/.profile
+export IMONGR_ADMINER_URL=$adminer_url
+EOF
+
+echo
 read -p 'Please type the openid client id: ' client_id
 echo
 echo Setting up openid client id
