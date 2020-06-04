@@ -5,12 +5,13 @@ proxy:
   port: 8080
   container-wait-time: 20000
   authentication: openid
+  admin-groups: manager
   openid:
     auth-url: https://dev-4bsfd97d.eu.auth0.com/authorize
     token-url: https://dev-4bsfd97d.eu.auth0.com/oauth/token
     jwks-url: https://dev-4bsfd97d.eu.auth0.com/.well-known/jwks.json
-    client_id: ${OPENID_CLIENT_ID}
-    client_secret: ${OPENID_CLIENT_SECRET}
+    client-id: ${OPENID_CLIENT_ID}
+    client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: https://mongr.no/imongr/shinyproxy_roles
   docker:
     internal-networking: true
@@ -26,3 +27,11 @@ proxy:
       IMONGR_DB_NAME: ${IMONGR_DB_NAME}
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
+server:
+  useForwardHeaders: true
+  servlet:
+    context-path: /imongr
+logging:
+  requestdump: true
+  level:
+    org.springframework: DEBUG

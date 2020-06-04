@@ -18,13 +18,13 @@ services:
       - 8080:8080
     networks:
       - mongr-net
-    logging:
-      driver: awslogs
-      options:
-        awslogs-region: eu-west-1
-        awslogs-group: shinyproxy-imongr
-        awslogs-stream: ${NODE_NAME}
-        awslogs-create-group: "true"
+    #logging:
+    #  driver: awslogs
+    #  options:
+    #    awslogs-region: eu-west-1
+    #    awslogs-group: shinyproxy-imongr
+    #    awslogs-stream: ${NODE_NAME}
+    #    awslogs-create-group: "true"
 networks:
   mongr-net:
     name: mongr-net
