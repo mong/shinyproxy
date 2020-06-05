@@ -13,6 +13,7 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: https://mongr.no/imongr/shinyproxy_roles
+    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Fmongr.no/imongr
   docker:
     internal-networking: true
   usage-stats-url: http://172.31.31.109:8086/write?db=shinyproxy_usagestats
