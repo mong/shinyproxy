@@ -34,5 +34,3 @@ server:
     context-path: /imongr
 logging:
   requestdump: true
-  level:
-    org.springframework: DEBUG
