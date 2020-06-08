@@ -1,7 +1,7 @@
 proxy:
   title: imongr
   hide-navbar: true
-  landing-page: /
+  landing-page: /imongr/app_direct/imongr
   port: 8080
   container-wait-time: 20000
   authentication: openid
