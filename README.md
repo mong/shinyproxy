@@ -11,13 +11,13 @@ _shinyproxy_ is part of the [infrastructure at mongr.no](https://github.com/SKDE
 Configuration of _shinyproxy_ is defined in the _application.yml_-file. Re-configuration will in most likely occur as a result of new shiny application being added (or old ones removed). For details please see [the ShinyProxy docs](https://www.shinyproxy.io/configuration/).
 
 ## Build
-Our _shinyproxy_ will itself run as a docker container. To build the corresponding image move into the directory holding the _Dockerfile_ and run
+Our _shinyproxy_ will itself run as a docker container. To build the corresponding image move into the directory _[project]_ holding the _Dockerfile_ and run
 ```
-docker build -t hnskde/shinyproxy:latest .
+docker build -t hnskde/shinyproxy-[project]:latest .
 ```
 Then, push this image to the registry:
 ```
-docker push hnskde/shinyproxy:latest
+docker push hnskde/shinyproxy-[project]:latest
 ```
 ## Install
 All steps are performed from the command line at each server instance (node) that will be running _shinyproxy_.
@@ -28,9 +28,9 @@ Make sure that the current content of this repo is available by using git:
 git clone https://github.com/mong/shinyproxy.git
 ```
 
-If the server to be hosting _shinyproxy_ is just created (vanilla state) make sure _docker-ce_ and _docker-compose_ are installed along with other relevant settings. Move into the newly created _shinyproxy_directory and run the following script:
+If the server to be hosting _shinyproxy_ is just created (vanilla state) make sure _docker-ce_ and _docker-compose_ are installed along with other relevant settings. Move into the newly created _shinyproxy_ project directory and run the following script:
 ```
-sudo ./install.sh
+./install.sh
 ```
 
 If AWS LogWatch will be used credetials need to be defined and available to docker. Add the following to _/etc/systemd/system/docker.service.d/override.conf_:
@@ -47,7 +47,7 @@ sudo systemctl restart docker
 ```
 Then, download the latest image from registry:
 ```
-docker pull hnskde/shinyproxy
+docker pull hnskde/shinyproxy-[project]
 ```
 Repeat the above instructions at all nodes.
 
@@ -56,7 +56,7 @@ Please note that an update of the _shinyproxy_ will render all shiny application
 
 First, make sure to download the latest update of the _shinyproxy_ image from the registry:
 ```
-docker pull hnskde/shinyproxy
+docker pull hnskde/shinyproxy-[project]
 ```
 If the update also includes changes of _docker-compose.yml_ get the latest version using git:
 ```
