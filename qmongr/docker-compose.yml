@@ -20,7 +20,7 @@ services:
       driver: awslogs
       options:
         awslogs-region: eu-west-1
-        awslogs-group: shinyproxy
+        awslogs-group: shinyproxy-qmongr
         awslogs-stream: ${NODE_NAME}
         awslogs-create-group: "true"
 networks:
