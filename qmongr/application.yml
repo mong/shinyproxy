@@ -19,11 +19,6 @@ proxy:
       IMONGR_DB_NAME: ${IMONGR_DB_NAME}
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
-  - id: tmongr
-    display-name: tmongr
-    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); tmongr::run_app()"]
-    container-image: hnskde/tmongr
-    container-network: mongr-net
 logging:
   file:
     shinyproxy.log
