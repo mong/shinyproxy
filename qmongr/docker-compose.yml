@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   shinyproxy:
-    image: hnskde/shinyproxy
+    image: hnskde/shinyproxy-qmongr
     restart: unless-stopped
     container_name: shinyproxy
     environment:
