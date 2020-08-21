@@ -19,6 +19,7 @@ proxy:
       IMONGR_DB_NAME: ${IMONGR_DB_NAME}
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
+      NODE_NAME: ${NODE_NAME}
 logging:
   file:
     shinyproxy.log
