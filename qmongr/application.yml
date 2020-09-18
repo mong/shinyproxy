@@ -7,7 +7,6 @@ proxy:
   authentication: none
   docker:
     internal-networking: true
-  usage-stats-url: http://172.31.31.109:8086/write?db=shinyproxy_usagestats
   specs:
   - id: qmongr
     display-name: qmongr
