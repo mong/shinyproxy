@@ -18,7 +18,6 @@ proxy:
     logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Fmongr.no/imongr
   docker:
     internal-networking: true
-  usage-stats-url: http://172.31.31.109:8086/write?db=shinyproxy_usagestats
   specs:
   - id: imongr
     display-name: imongr
