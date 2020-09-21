@@ -111,10 +111,6 @@ echo
 
 echo
 echo Finished
-echo Finished
-echo
 echo
 echo Please remember to add aws key/secrets to /etc/systemd/system/docker.service.d/awslogs.conf and re-login before running docker-compose
-echo Please remember to add aws key/secrets to /etc/systemd/system/docker.service.d/awslogs.conf, restart the docker daemon (sudo systemctl daemon-reload) and re-login before running docker-compose
-echo
 echo
