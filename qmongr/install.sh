@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### Install script for docker ++ at ubuntu 18.04 (bionic)
+### Install script for docker ++ at ubuntu 20.04 (focal fossa)
 
 # get node name and set env accordingly
 echo
@@ -58,7 +58,7 @@ sudo apt install -y apt-transport-https ca-certificates curl software-properties
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 # add apt source
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 
 # update package database
 sudo apt update
@@ -111,7 +111,10 @@ echo
 
 echo
 echo Finished
+echo Finished
 echo
-echo Please remember to re-login before running docker-compose
 echo
-
+echo Please remember to add aws key/secrets to /etc/systemd/system/docker.service.d/awslogs.conf and re-login before running docker-compose
+echo Please remember to add aws key/secrets to /etc/systemd/system/docker.service.d/awslogs.conf, restart the docker daemon (sudo systemctl daemon-reload) and re-login before running docker-compose
+echo
+echo
