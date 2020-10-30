@@ -22,4 +22,5 @@ proxy:
 logging:
   file:
     shinyproxy.log
-
+server:
+  useForwardHeaders: true
