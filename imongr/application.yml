@@ -15,9 +15,13 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: https://imongr.skde.org/shinyproxy_roles
-    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Fimongr.skde.org
+    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=https%3A%2F%2Fimongr.skde.org
   docker:
     internal-networking: true
+  container-log-path: s3://shinyproxy-apps-log
+  container-log-s3-access-key: ${AWS_S3_ACCESS_KEY}
+  container-log-s3-access-secret: ${AWS_S3_ACCESS_SECRET}
+  container-log-s3-endpoint: https://s3-eu-west-1.amazonaws.com
   specs:
   - id: imongr
     display-name: imongr
@@ -31,9 +35,13 @@ proxy:
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
 server:
-  useForwardHeaders: true
+  #useForwardHeaders: true
+  forward-headers-strategy: native
 spring:
   servlet:
     multipart:
       max-file-size: 90MB
       max-request-size: 100MB
+logging:
+  level:
+    root: INFO
