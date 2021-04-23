@@ -3,7 +3,7 @@ proxy:
   logo-url: https://raw.githubusercontent.com/mong/imongr/master/pkgdown/favicon/apple-touch-icon-152x152.png
   favicon-path: /opt/shinyproxy/favicon.ico
   hide-navbar: true
-  landing-page: /imongr/app_direct/imongr
+  landing-page: /app_direct/imongr
   port: 8080
   container-wait-time: 20000
   authentication: openid
@@ -14,8 +14,8 @@ proxy:
     jwks-url: https://dev-4bsfd97d.eu.auth0.com/.well-known/jwks.json
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
-    roles-claim: https://mongr.no/imongr/shinyproxy_roles
-    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Fmongr.no/imongr
+    roles-claim: https://imongr.skde.org/shinyproxy_roles
+    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=http%3A%2F%2Fimongr.skde.org
   docker:
     internal-networking: true
   specs:
@@ -32,8 +32,6 @@ proxy:
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
 server:
   useForwardHeaders: true
-  servlet:
-    context-path: /imongr
 spring:
   servlet:
     multipart:
