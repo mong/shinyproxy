@@ -30,6 +30,8 @@ proxy:
     container-network: mongr-net
     container-env:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
+      IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
+      IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST_QA}
       IMONGR_DB_NAME: ${IMONGR_DB_NAME}
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
