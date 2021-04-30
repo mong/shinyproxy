@@ -13,6 +13,8 @@ services:
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
       OPENID_CLIENT_ID: ${OPENID_CLIENT_ID}
       OPENID_CLIENT_SECRET: ${OPENID_CLIENT_SECRET}
+      AWS_S3_ACCESS_KEY: ${AWS_S3_ACCESS_KEY}
+      AWS_S3_ACCESS_SECRET: ${AWS_S3_ACCESS_SECRET}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
