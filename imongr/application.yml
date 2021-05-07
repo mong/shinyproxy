@@ -15,7 +15,7 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: cognito:groups
-    logout-url: https://imongr.skde.org/v2/logout?returnTo=https%3A%2F%2Fimongr.skde.org/logout-success
+    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://qa-imongr.skde.org
   docker:
     internal-networking: true
   container-log-path: s3://shinyproxy-apps-log
