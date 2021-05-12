@@ -26,7 +26,7 @@ proxy:
   - id: imongr
     display-name: imongr
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
-    container-image: hnskde/imongr:cognito
+    container-image: hnskde/imongr
     container-network: mongr-net
     container-env:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
