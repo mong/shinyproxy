@@ -9,13 +9,13 @@ proxy:
   authentication: openid
   admin-groups: manager
   openid:
-    auth-url: https://dev-4bsfd97d.eu.auth0.com/authorize
-    token-url: https://dev-4bsfd97d.eu.auth0.com/oauth/token
-    jwks-url: https://dev-4bsfd97d.eu.auth0.com/.well-known/jwks.json
+    auth-url: https://login-imongr.skde.org/oauth2/authorize
+    token-url: https://login-imongr.skde.org/oauth2/token
+    jwks-url:  https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ltXTLvLq6/.well-known/jwks.json
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
-    roles-claim: https://imongr.skde.org/shinyproxy_roles
-    logout-url: https://dev-4bsfd97d.eu.auth0.com/v2/logout?returnTo=https%3A%2F%2Fimongr.skde.org
+    roles-claim: cognito:groups
+    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.org
   docker:
     internal-networking: true
   container-log-path: s3://shinyproxy-apps-log
@@ -26,7 +26,7 @@ proxy:
   - id: imongr
     display-name: imongr
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
-    container-image: hnskde/imongr
+    container-image: hnskde/imongr:${APPLICATION_IMAGE_TAG}
     container-network: mongr-net
     container-env:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
