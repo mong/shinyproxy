@@ -11,7 +11,7 @@ proxy:
   openid:
     auth-url: https://login-imongr.skde.org/oauth2/authorize
     token-url: https://login-imongr.skde.org/oauth2/token
-    jwks-url:  https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_SN5deHPq2/.well-known/jwks.json
+    jwks-url:  https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ltXTLvLq6/.well-known/jwks.json
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: cognito:groups
