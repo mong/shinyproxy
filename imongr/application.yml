@@ -39,6 +39,7 @@ proxy:
 server:
   #useForwardHeaders: true
   forward-headers-strategy: native
+  servlet.session.timeout: 12200
 spring:
   servlet:
     multipart:
