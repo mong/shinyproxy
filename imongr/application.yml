@@ -36,6 +36,21 @@ proxy:
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+    access-groups: [PROVIDER,MANAGER]
+  - id: qa-imongr
+    display-name: qa-imongr
+    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
+    container-image: hnskde/imongr:master
+    container-network: mongr-net
+    container-env:
+      IMONGR_DB_HOST: ${IMONGR_DB_HOST}
+      IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
+      IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST_QA}
+      IMONGR_DB_NAME: ${IMONGR_DB_NAME}
+      IMONGR_DB_USER: ${IMONGR_DB_USER}
+      IMONGR_DB_PASS: ${IMONGR_DB_PASS}
+      IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+    access-groups: [MANAGER]
 server:
   #useForwardHeaders: true
   forward-headers-strategy: native
