@@ -60,7 +60,7 @@ docker pull hnskde/shinyproxy-[project]
 ```
 If the update also includes changes of _docker-compose.yml_ get the latest version using git:
 ```
-git pull origin master
+git pull origin main
 ```
 
 Then, take down _shinyproxy_ docker container:
