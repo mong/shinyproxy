@@ -1,6 +1,6 @@
 proxy:
   title: imongr
-  logo-url: https://raw.githubusercontent.com/mong/imongr/master/pkgdown/favicon/apple-touch-icon-152x152.png
+  logo-url: https://raw.githubusercontent.com/mong/imongr/main/pkgdown/favicon/apple-touch-icon-152x152.png
   favicon-path: /opt/shinyproxy/favicon.ico
   hide-navbar: true
   landing-page: /app_direct/imongr
