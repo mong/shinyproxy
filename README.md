@@ -1,11 +1,11 @@
 # Proxy our shiny apps <img src="logo.svg" align="right" height="120" />
 
 ## Introduction
-Re-using the name of [the underlying Spring boot web application](https://www.shinyproxy.io/) _shinyproxy_ is the deployer of shiny web applications developed and mentained by SKDE. Both _shinyserver_ and the web applications it it a proxy for are deployed as [docker containers](https://www.yr.no/place/Norway/Troms_og_Finnmark/Troms%C3%B8/Troms%C3%B8/hour_by_hour.html) and replicated at a given number of nodes to reduce potential downtime.
+Re-using the name of [the underlying Spring boot web application](https://www.shinyproxy.io/) _shinyproxy_ is the deployer of shiny web applications developed and mentained by SKDE. Both _shinyserver_ and the web applications it it a proxy for are deployed as [docker containers](https://www.docker.com/resources/what-container/) and replicated at a given number of nodes to reduce potential downtime.
 
 ![mongr.no shinyproxy setup](mongr_shinyproxy.png)
 
-_shinyproxy_ is part of the [infrastructure at mongr.no](https://github.com/SKDE-Felles/lb-rp) and serves shiny applications such as [qmongr](https://github.com/SKDE-Felles/qmongr).
+_shinyproxy_ is part of the [infrastructure at mongr.no](https://github.com/mong/lb-rp) and serves the shiny application [imongr](https://github.com/mong/imongr).
 
 ## Config
 Configuration of _shinyproxy_ is defined in the _application.yml_-file. Re-configuration will in most likely occur as a result of new shiny application being added (or old ones removed). For details please see [the ShinyProxy docs](https://www.shinyproxy.io/configuration/).
