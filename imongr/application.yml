@@ -1,6 +1,6 @@
 proxy:
   title: imongr
-  logo-url: https://raw.githubusercontent.com/mong/imongr/master/pkgdown/favicon/apple-touch-icon-152x152.png
+  logo-url: https://raw.githubusercontent.com/mong/imongr/main/pkgdown/favicon/apple-touch-icon-152x152.png
   favicon-path: /opt/shinyproxy/favicon.ico
   hide-navbar: true
   landing-page: /app_direct/imongr
@@ -40,7 +40,7 @@ proxy:
   - id: qa-imongr
     display-name: qa-imongr
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
-    container-image: hnskde/imongr:master
+    container-image: hnskde/imongr:main
     container-network: mongr-net
     container-env:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
