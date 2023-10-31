@@ -50,7 +50,7 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5.0.0
         with:
-          context: .
+          context: ./${{ matrix.config.name }}
           file: ./${{ matrix.config.name }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
