@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - update_to_v3.0
   pull_request:
     branches:
       - main
