@@ -28,7 +28,7 @@ Make sure that the current content of this repo is available by using git:
 git clone https://github.com/mong/shinyproxy.git
 ```
 
-If the server to be hosting _shinyproxy_ is just created (vanilla state) make sure _docker-ce_ and _docker-compose_ are installed along with other relevant settings. Move into the newly created _shinyproxy_ project directory and run the following script:
+If the server to be hosting _shinyproxy_ is just created (vanilla state), move into the newly created _shinyproxy_ project directory and run the following script:
 ```
 ./install.sh
 ```
@@ -65,7 +65,7 @@ git pull origin main
 
 Then, take down _shinyproxy_ docker container:
 ```
-docker-compose down
+docker compose down
 ```
 and clean up old images and containers:
 ```
@@ -73,25 +73,25 @@ docker system prune
 ```
 Finally, bring up the updated _shinyproxy_ container:
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 Repeat the above steps on all nodes.
 
 ## Start and stop service
-To enable _shinyproxy_ use _docker-compose_ to start the relevant services in detached mode. Move into the _shinyproxy_ directory and run:
+To enable _shinyproxy_ use _docker compose_ to start the relevant services in detached mode. Move into the _shinyproxy_ directory and run:
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 To stop it do:
 ```
-docker-compose down
+docker compose down
 ```
 
 To bring the services down an up again in one go do:
 ```
-docker-compose restart
+docker compose restart
 ```
 
 For other options please consult [the docker compose docs](https://docs.docker.com/compose/).
