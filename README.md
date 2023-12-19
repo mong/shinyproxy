@@ -82,6 +82,7 @@ Repeat the above steps on all nodes.
 ## Start and stop service
 To enable _shinyproxy_ use _docker compose_ to start the relevant services in detached mode. Move into the _shinyproxy_ directory and run:
 ```
+export DOCKERID=$(getent group docker | cut -d: -f3) # to get access to run docker daemon
 docker compose up -d
 ```
 
