@@ -31,7 +31,7 @@ jobs:
           dockerfile: "${{ matrix.config.name }}/Dockerfile"
       - name: Prepare tags
         id: docker_meta
-        uses: docker/metadata-action@v5.0.0
+        uses: docker/metadata-action@v5.4.0
         with:
           images: hnskde/shinyproxy-${{ matrix.config.name }}
           tags: |
@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push to Docker Hub
-        uses: docker/build-push-action@v5.0.0
+        uses: docker/build-push-action@v5.1.0
         with:
           context: ./${{ matrix.config.name }}
           platforms: linux/amd64,linux/arm64
