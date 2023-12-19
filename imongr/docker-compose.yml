@@ -5,6 +5,7 @@ services:
     image: hnskde/shinyproxy-imongr
     restart: unless-stopped
     container_name: shinyproxy
+    user: ":${DOCKERID}"
     environment:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
       IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}

@@ -73,6 +73,7 @@ docker system prune
 ```
 Finally, bring up the updated _shinyproxy_ container:
 ```
+export DOCKERID=$(getent group docker | cut -d: -f3)
 docker compose up -d
 ```
 
