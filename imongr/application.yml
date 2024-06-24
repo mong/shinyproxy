@@ -20,8 +20,8 @@ proxy:
     internal-networking: true
     image-pull-policy: Always
   container-log-path: s3://shinyproxy-apps-log
-  container-log-s3-access-key: ${AWS_S3_ACCESS_KEY}
-  container-log-s3-access-secret: ${AWS_S3_ACCESS_SECRET}
+  container-log-s3-access-key: ${AWS_ACCESS_KEY_ID}
+  container-log-s3-access-secret: ${AWS_SECRET_ACCESS_KEY}
   container-log-s3-endpoint: https://s3-eu-west-1.amazonaws.com
   specs:
   - id: imongr
@@ -37,6 +37,9 @@ proxy:
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      distribution_id: ${distribution_id}
   - id: qa-imongr
     display-name: qa-imongr
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
@@ -50,6 +53,9 @@ proxy:
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      distribution_id: ${distribution_id}
     access-groups: [MANAGER]
 server:
   #useForwardHeaders: true
