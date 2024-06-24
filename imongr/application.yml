@@ -37,6 +37,9 @@ proxy:
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_S3_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_S3_ACCESS_SECRET}
+      distribution_id: ${distribution_id}
   - id: qa-imongr
     display-name: qa-imongr
     container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
@@ -50,6 +53,9 @@ proxy:
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_S3_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_S3_ACCESS_SECRET}
+      distribution_id: ${distribution_id}
     access-groups: [MANAGER]
 server:
   #useForwardHeaders: true
