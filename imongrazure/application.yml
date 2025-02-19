@@ -35,7 +35,7 @@ proxy:
         IMONGR_DB_USER: ${IMONGR_DB_USER}
         IMONGR_DB_PASS: ${IMONGR_DB_PASS}
         IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
-        distribution_id: E2ANX0NUJHAHCF
+        distribution_id: ${distribution_id}
   container-log-path: /opt/shinyproxy/logs/container-logs
 server:
   useForwardHeaders: true
