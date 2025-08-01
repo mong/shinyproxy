@@ -31,7 +31,7 @@ jobs:
           dockerfile: "${{ matrix.config.name }}/Dockerfile"
       - name: Prepare tags
         id: docker_meta
-        uses: docker/metadata-action@v5.5.1
+        uses: docker/metadata-action@v5.8.0
         with:
           images: hnskde/shinyproxy-${{ matrix.config.name }}
           tags: |
