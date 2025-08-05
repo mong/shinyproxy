@@ -1,4 +1,4 @@
-FROM eclipse-temurin:8-jre-jammy
+FROM eclipse-temurin:21.0.8_9-jre-jammy
 
 RUN mkdir -p /opt/shinyproxy/ \
   && wget --progress=dot:giga https://www.shinyproxy.io/downloads/shinyproxy-3.0.2.jar -O /opt/shinyproxy/shinyproxy.jar
