@@ -20,6 +20,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/log/shinyproxy/:/opt/shinyproxy/logs/
+    user: "0:0"
     ports:
       - 8080:8080
     networks:
