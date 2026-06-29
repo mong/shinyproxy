@@ -20,6 +20,6 @@
 # Automatisk sletting av gamle container-logger gjøres med crontab (crontab -e)
 # 0 0 * * * /usr/bin/find /var/log/shinyproxy/container-logs -name "*.log" -type f -mtime +7 -exec rm -f {} \;
 
-docker-compose down
-docker-compose up --build -d
+docker compose down
+docker compose up --build -d
 
