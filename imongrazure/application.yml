@@ -20,7 +20,7 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: cognito:groups
-    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr-test-hrhcfabjese9dbdd.a03.azurefd.net/logout-success
+    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.no/logout-success
   specs:
     - id: imongr
       display-name: imongr
@@ -35,6 +35,11 @@ proxy:
         IMONGR_DB_USER: ${IMONGR_DB_USER}
         IMONGR_DB_PASS: ${IMONGR_DB_PASS}
         IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+        AZ_USER_NAME: ${AZ_USER_NAME}
+        AZ_TENANT: ${AZ_TENANT}
+        AZ_SECRET: ${AZ_SECRET}
+        API_ENDPOINT_NAME: ${API_ENDPOINT_NAME}
+        IMONGR_LOGOUT_URL: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.no/logout-success
   container-log-path: /opt/shinyproxy/logs/container-logs
 server:
   useForwardHeaders: true
@@ -50,4 +55,4 @@ logging:
     name: /opt/shinyproxy/logs/shinyproxy.log
     max-size: 1MB
     total-size-cap: 10MB
-  level: INFO
+  level: DEBUG
