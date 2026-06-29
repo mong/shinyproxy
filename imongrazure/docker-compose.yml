@@ -17,6 +17,7 @@ services:
       AZ_TENANT: ${AZ_TENANT}
       AZ_SECRET: ${AZ_SECRET}
       API_ENDPOINT_NAME: ${API_ENDPOINT_NAME}
+      DOCKER_HOST: unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/log/shinyproxy/:/opt/shinyproxy/logs/
