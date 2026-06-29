@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {name: imongr}
+          - {name: imongrazure}
     name: Image shinyproxy-${{ matrix.config.name }}
     steps:
       - name: Check out the repo
