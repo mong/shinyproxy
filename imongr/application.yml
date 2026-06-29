@@ -1,11 +1,16 @@
 proxy:
-  title: imongr
+  title: imongrproxy
   logo-url: https://raw.githubusercontent.com/mong/imongr/main/pkgdown/favicon/apple-touch-icon-152x152.png
   favicon-path: /opt/shinyproxy/favicon.ico
   hide-navbar: true
   landing-page: /app_direct/imongr
   port: 8080
   container-wait-time: 20000
+  docker:
+    internal-networking: true
+    image-pull-policy: Always
+    heartbeat-rate: 10000
+    heartbeat-timeout: 60000
   authentication: openid
   admin-groups: manager
   openid:
@@ -15,57 +20,34 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: cognito:groups
-    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.no/logout-success
-  docker:
-    internal-networking: true
-    image-pull-policy: Always
-  container-log-path: s3://shinyproxy-apps-log
-  container-log-s3-access-key: ${AWS_ACCESS_KEY_ID}
-  container-log-s3-access-secret: ${AWS_SECRET_ACCESS_KEY}
-  container-log-s3-endpoint: https://s3-eu-west-1.amazonaws.com
+    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr-test-hrhcfabjese9dbdd.a03.azurefd.net/logout-success
   specs:
-  - id: imongr
-    display-name: imongr
-    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
-    container-image: hnskde/imongr:${APPLICATION_IMAGE_TAG}
-    container-network: mongr-net
-    container-env:
-      IMONGR_DB_HOST: ${IMONGR_DB_HOST}
-      IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
-      IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST_QA}
-      IMONGR_DB_NAME: ${IMONGR_DB_NAME}
-      IMONGR_DB_USER: ${IMONGR_DB_USER}
-      IMONGR_DB_PASS: ${IMONGR_DB_PASS}
-      IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-      distribution_id: ${distribution_id}
-  - id: qa-imongr
-    display-name: qa-imongr
-    container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
-    container-image: hnskde/imongr:main
-    container-network: mongr-net
-    container-env:
-      IMONGR_DB_HOST: ${IMONGR_DB_HOST}
-      IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
-      IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST_QA}
-      IMONGR_DB_NAME: ${IMONGR_DB_NAME}
-      IMONGR_DB_USER: ${IMONGR_DB_USER}
-      IMONGR_DB_PASS: ${IMONGR_DB_PASS}
-      IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-      distribution_id: ${distribution_id}
-    access-groups: [MANAGER]
+    - id: imongr
+      display-name: imongr
+      container-cmd: ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); imongr::run_app()"]
+      container-image: hnskde/imongr:${APPLICATION_IMAGE_TAG}
+      container-network: mongr_net
+      container-env:
+        IMONGR_DB_HOST: ${IMONGR_DB_HOST}
+        IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST}
+        IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
+        IMONGR_DB_NAME: ${IMONGR_DB_NAME}
+        IMONGR_DB_USER: ${IMONGR_DB_USER}
+        IMONGR_DB_PASS: ${IMONGR_DB_PASS}
+        IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
+  container-log-path: /opt/shinyproxy/logs/container-logs
 server:
-  #useForwardHeaders: true
+  useForwardHeaders: true
   forward-headers-strategy: native
   servlet.session.timeout: 12200
 spring:
   servlet:
     multipart:
-      max-file-size: 90MB
+      max-file-size: 100MB
       max-request-size: 100MB
 logging:
-  level:
-    root: INFO
+  file:
+    name: /opt/shinyproxy/logs/shinyproxy.log
+    max-size: 1MB
+    total-size-cap: 10MB
+  level: INFO

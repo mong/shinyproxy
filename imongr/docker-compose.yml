@@ -1,37 +1,33 @@
-version: "3.6"
-
 services:
   shinyproxy:
-    image: hnskde/shinyproxy-imongr
+    build: .
     restart: unless-stopped
-    container_name: shinyproxy
+    container_name: shinyproxyazure
     environment:
       IMONGR_DB_HOST: ${IMONGR_DB_HOST}
       IMONGR_DB_HOST_VERIFY: ${IMONGR_DB_HOST_VERIFY}
-      IMONGR_DB_HOST_QA: ${IMONGR_DB_HOST_QA}
       IMONGR_DB_NAME: ${IMONGR_DB_NAME}
       IMONGR_DB_USER: ${IMONGR_DB_USER}
       IMONGR_DB_PASS: ${IMONGR_DB_PASS}
       IMONGR_ADMINER_URL: ${IMONGR_ADMINER_URL}
       OPENID_CLIENT_ID: ${OPENID_CLIENT_ID}
       OPENID_CLIENT_SECRET: ${OPENID_CLIENT_SECRET}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-      distribution_id: ${distribution_id}
       APPLICATION_IMAGE_TAG: ${APPLICATION_IMAGE_TAG}
+      AZ_USER_NAME: ${AZ_USER_NAME}
+      AZ_TENANT: ${AZ_TENANT}
+      AZ_SECRET: ${AZ_SECRET}
+      API_ENDPOINT_NAME: ${API_ENDPOINT_NAME}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /var/log/shinyproxy/:/opt/shinyproxy/logs/
+    user: "0:0"
     ports:
       - 8080:8080
     networks:
-      - mongr-net
+      - mongr_net
     logging:
-      driver: awslogs
-      options:
-        awslogs-region: eu-west-1
-        awslogs-group: shinyproxy-imongr
-        awslogs-stream: ${NODE_NAME}
-        awslogs-create-group: "true"
+      driver: json-file
 networks:
-  mongr-net:
-    name: mongr-net
+  mongr_net:
+    name: mongr_net
+
