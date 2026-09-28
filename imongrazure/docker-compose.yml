@@ -1,6 +1,7 @@
 services:
   shinyproxy:
     build: .
+    pull_policy: build
     restart: unless-stopped
     container_name: shinyproxyazure
     environment:
