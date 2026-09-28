@@ -39,7 +39,7 @@ proxy:
         AZ_TENANT: ${AZ_TENANT}
         AZ_SECRET: ${AZ_SECRET}
         API_ENDPOINT_NAME: ${API_ENDPOINT_NAME}
-        IMONGR_LOGOUT_URL: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.no/logout-success
+        IMONGR_LOGOUT_URL: https://imongr.skde.no/logout
   container-log-path: /opt/shinyproxy/logs/container-logs
 server:
   useForwardHeaders: true
