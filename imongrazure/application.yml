@@ -20,7 +20,7 @@ proxy:
     client-id: ${OPENID_CLIENT_ID}
     client-secret: ${OPENID_CLIENT_SECRET}
     roles-claim: cognito:groups
-    logout-url: https://login-imongr.skde.org/logout?client_id=${OPENID_CLIENT_ID}&logout_uri=https://imongr.skde.no/logout-success
+    logout-url: https://imongr.skde.no/logout
   specs:
     - id: imongr
       display-name: imongr
