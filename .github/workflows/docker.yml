@@ -29,35 +29,11 @@ jobs:
         uses: hadolint/hadolint-action@v3.5.0
         with:
           dockerfile: "${{ matrix.config.name }}/Dockerfile"
-      - name: Prepare tags
-        id: docker_meta
-        uses: docker/metadata-action@v6
-        with:
-          images: hnskde/shinyproxy-${{ matrix.config.name }}
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
-      - name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v4
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v7
         with:
           context: ./${{ matrix.config.name }}
-          platforms: linux/amd64,linux/arm64
           file: ./${{ matrix.config.name }}/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
-          build-args: GH_PAT=${{ secrets.GITHUB_TOKEN }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          push: false
